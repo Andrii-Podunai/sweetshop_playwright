@@ -56,7 +56,13 @@ export class BasketPage {
         return this.standardShippingOption.click({ force: true });
     }
 
-async fillCheckoutForm(data: {
+    async getUpdatedTotalPrice(): Promise<number> {
+        const totalPriceText = await this.totalPriceLocator.textContent();
+        return parseFloat(totalPriceText?.replace('£', '') || '0');
+    }
+
+
+    async fillCheckoutForm(data: {
         firstName: string;
         lastName: string;
         email: string;

@@ -1,10 +1,10 @@
-import { test,expect } from "../fixtures/fixtures";
+import { test, expect } from "../fixtures/fixtures";
 
 
 test.describe('Sweet Shop - Basket Tests', () => {
-    test('Add products to the basket and verify total price', async ({homePage,basketPage,page}) => {
+    test('Add products to the basket and verify total price', async ({ homePage, basketPage, page }) => {
 
-       await test.step('Ensure the website is accessible', async () => {
+        await test.step('Ensure the website is accessible', async () => {
             const accessibilityReport = await page.accessibility.snapshot();
             expect(accessibilityReport).toBeTruthy();
         });
@@ -33,16 +33,23 @@ test.describe('Sweet Shop - Basket Tests', () => {
         // Select Standard Shipping and verify the updated total price
         await basketPage.selectStandardShipping();
 
+        await basketPage.selectStandardShipping();
+
+        let expectedTotalPrice = calculatedTotalPrice + 1.99;
+        const updatedTotalPrice = await basketPage.getUpdatedTotalPrice();
+
+        // expect(updatedTotalPrice).toBe(expectedTotalPrice); // Uncomment this when bag is fixed
+
         // Define checkout data
         const checkoutData = {
             firstName: 'John',
-            lastName: 'Doe',
-            email: 'john.doe@example.com',
-            address: '123 Sweet Street, Candyland',
+            lastName: 'Brainee',
+            email: 'john.brainee@example.com',
+            address: '123 Sweet Street',
             country: 'United Kingdom',
             city: 'Bristol',
-            zip: 'BS1 5AH',
-            ccName: 'John Doe',
+            zip: '35005',
+            ccName: 'John Brainee',
             ccNumber: '4111111111111111',
             ccExpiration: '12/25',
             ccCVV: '123',

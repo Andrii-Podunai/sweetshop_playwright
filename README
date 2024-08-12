@@ -24,9 +24,3 @@ The deployment process is handled by CircleCI and runs based on the branch:
 - **QA**: Runs on the `develop` branch.
 - **Preprod**: Runs on the `preprod` branch.
 - **Prod**: Runs on the `main` branch.
-
-## Accessibility Testing
-Accessibility is checked using Playwright's accessibility snapshot feature. This ensures that the website is accessible to all users.
-
-## Contributing
-Please submit a pull request with any changes or improvements.
